@@ -372,82 +372,84 @@ function applyStaticLang(){
  * ============================================================ */
 // Paredes: [x0,y0,x1,y1,tipo]  b=parede mais forte e=externa n=interna low=meia parede/bancada
 const WALLS = [
-  // Contorno externo do L principal.
-  [10500,-240,21000,0,'e'],[21000,0,21240,7000,'e'],[18000,7000,18240,15000,'e'],
-  [12100,15000,18000,15240,'e'],[0,15000,2200,15240,'e'],[3200,15000,11100,15240,'e'],
-  [-240,7000,0,15000,'e'],[0,6760,600,7000,'e'],[4600,6760,5400,7000,'e'],
-  [8800,6760,9600,7000,'e'],[12400,6760,18000,7000,'e'],[10260,0,10500,6760,'e'],
+  // Contorno externo e alpendre.
+  [10500,-240,21000,0,'e'],[21000,0,21240,7000,'e'],[21000,7000,21240,8200,'e'],
+  [18000,8200,18240,15500,'e'],[12800,15500,18000,15740,'e'],[8200,15500,12800,15740,'e'],
+  [0,15500,6200,15740,'e'],[-240,10500,0,15500,'e'],[-240,7000,0,9500,'e'],
+  [0,6760,600,7000,'e'],[4600,6760,5400,7000,'e'],[8800,6760,9200,7000,'e'],
+  [10500,6760,12300,7000,'e'],[12300,3000,18500,3240,'e'],[12300,3560,21000,3800,'e'],
 
   // Divisões sociais, apoio e serviço.
-  [0,12340,2200,12500,'n'],[3100,12340,5200,12500,'n'],[5200,12340,9800,12500,'n'],
-  [10900,12340,12800,12500,'n'],[5200,12500,5360,15000,'n'],[9000,12500,9160,15000,'n'],
-  [10500,12500,10660,15000,'n'],[12800,7000,12960,10400,'n'],[12800,11300,12960,15000,'n'],
-  [12800,8500,13400,8660,'n'],[14200,8500,16000,8660,'n'],[16800,8500,18000,8660,'n'],
-  [15000,7000,15160,8500,'n'],[15800,8500,15960,10500,'n'],[15800,10500,18000,10660,'n'],
+  [0,12340,2500,12500,'n'],[3400,12340,7000,12500,'n'],[8000,12340,12300,12500,'n'],
+  [6200,12500,6360,15500,'n'],[9800,12500,9960,15500,'n'],[11000,12500,11160,15500,'n'],
+  [12300,7000,12460,7600,'n'],[12300,8400,12460,9000,'n'],[12300,9800,12460,11200,'n'],
+  [12300,12100,12460,15500,'n'],[12300,8200,14500,8360,'n'],[12300,9700,14500,9860,'n'],
+  [14500,8200,14660,11200,'n'],[15800,11200,15960,15500,'n'],[15800,13400,18000,13560,'n'],
 
   // Ala íntima familiar.
-  [12300,0,12460,1200,'n'],[12300,2100,12460,4400,'n'],[12300,5200,12460,6500,'n'],
-  [12300,6500,13200,6660,'n'],[14100,6500,18500,6660,'n'],[19400,6500,21000,6660,'n'],
-  [12300,3500,18000,3660,'n'],[18000,0,18160,1000,'n'],[18000,1800,18160,3500,'n'],
-  [18000,2200,21000,2360,'n'],[15650,3500,15810,4500,'n'],[15650,5300,15810,6500,'n'],
-  [17350,3500,17510,4500,'n'],[17350,5300,17510,6500,'n']
+  [10500,0,10740,7000,'e'],[10500,7000,13500,7160,'n'],[14400,7000,18700,7160,'n'],[19600,7000,21000,7160,'n'],
+  [12300,0,12460,1200,'n'],[12300,2100,12460,3000,'n'],[12300,3800,12460,4700,'n'],[12300,5600,12460,7000,'n'],
+  [18500,0,18660,800,'n'],[18500,1600,18660,2450,'n'],[18500,3250,21000,3410,'n'],
+  [15800,3800,15960,4700,'n'],[15800,5500,15960,7000,'n'],[17500,3800,17660,5500,'n'],[17500,6300,17660,7000,'n']
 ];
 // Janelas e panos fixos de vidro.
 const WINS = [
-  [12600,-240,15200,0],[18400,-240,20500,0],[21000,700,21240,1900],[21000,4400,21240,6000],
-  [-240,8200,0,10800],[-240,13200,0,14600],[5200,15000,9000,15240],[18000,11800,18240,14200],
-  [10260,1200,10500,3000],[10260,3600,10500,5600]
+  [13500,-240,16000,0],[19200,-240,20500,0],[21000,4800,21240,6200],[13500,3260,15000,3500],
+  [13200,15500,15000,15740],[-240,7800,0,9200],[-240,13200,0,14800],[6200,15500,7200,15740],
+  [8200,15500,9600,15740],[10260,1200,10500,3000]
 ];
 // Portas de abrir: vão, dobradiça, direção fechada, direção aberta, largura.
 const DOORS = [
-  {name:'Entrada social',rect:[2200,15000,3200,15240],h:[2200,15000],c:[1,0],o:[0,-1],len:1000,entry:true},
-  {name:'Entrada garagem',rect:[11100,15000,12100,15240],h:[12100,15000],c:[-1,0],o:[0,-1],len:1000,entry:true},
-  {name:'Porta homeschooling',rect:[2200,12340,3100,12500],h:[2200,12500],c:[1,0],o:[0,-1],len:900},
-  {name:'Porta lavanderia',rect:[9800,12340,10900,12500],h:[10900,12500],c:[-1,0],o:[0,-1],len:900},
-  {name:'Porta suíte hóspedes',rect:[12800,10400,12960,11300],h:[12800,11300],c:[0,-1],o:[-1,0],len:900},
-  {name:'Banho hóspedes',rect:[15800,9300,15960,10100],h:[15800,10100],c:[0,-1],o:[-1,0],len:800},
-  {name:'Lavabo social',rect:[16000,8500,16800,8660],h:[16000,8500],c:[1,0],o:[0,1],len:800},
-  {name:'Despensa',rect:[13400,8500,14200,8660],h:[13400,8500],c:[1,0],o:[0,1],len:800},
+  {name:'Entrada social',rect:[-240,9500,0,10500],h:[0,10500],c:[0,-1],o:[1,0],len:1000,entry:true},
+  {name:'Entrada garagem',rect:[11200,15500,12200,15740],h:[12200,15500],c:[-1,0],o:[0,1],len:1000,entry:true},
+  {name:'Porta homeschooling',rect:[2500,12340,3400,12500],h:[2500,12500],c:[1,0],o:[0,1],len:900},
+  {name:'Porta lavanderia',rect:[7000,12340,8000,12500],h:[8000,12500],c:[-1,0],o:[0,1],len:1000},
+  {name:'Saída lavanderia varal',rect:[7200,15500,8200,15740],h:[7200,15500],c:[1,0],o:[0,1],len:1000},
+  {name:'Suíte hóspedes',rect:[12300,11200,12460,12100],h:[12300,12100],c:[0,-1],o:[-1,0],len:900},
+  {name:'Banho hóspedes',rect:[15800,11600,15960,12400],h:[15800,12400],c:[0,-1],o:[-1,0],len:800},
+  {name:'Lavabo social',rect:[12300,10000,12460,10800],h:[12300,10800],c:[0,-1],o:[-1,0],len:800},
+  {name:'Despensa',rect:[12300,8500,12460,9300],h:[12300,9300],c:[0,-1],o:[-1,0],len:800},
   {name:'Suíte casal',rect:[12300,1200,12460,2100],h:[12460,2100],c:[0,-1],o:[1,0],len:900},
-  {name:'Banho casal',rect:[18000,1000,18160,1800],h:[18000,1800],c:[0,-1],o:[-1,0],len:800},
-  {name:'Quarto meninos 1',rect:[13200,6500,14100,6660],h:[13200,6500],c:[1,0],o:[0,-1],len:900},
-  {name:'Quarto meninos 2',rect:[18500,6500,19400,6660],h:[19400,6500],c:[-1,0],o:[0,-1],len:900},
-  {name:'Banheiro meninos porta 1',rect:[15650,4500,15810,5300],h:[15650,5300],c:[0,-1],o:[-1,0],len:800},
-  {name:'Banheiro meninos porta 2',rect:[17350,4500,17510,5300],h:[17510,5300],c:[0,-1],o:[1,0],len:800}
+  {name:'Banho casal',rect:[18500,800,18660,1600],h:[18500,1600],c:[0,-1],o:[-1,0],len:800},
+  {name:'Closet casal',rect:[18500,2450,18660,3250],h:[18500,3250],c:[0,-1],o:[-1,0],len:800},
+  {name:'Quarto meninos 1',rect:[13500,7000,14400,7160],h:[13500,7000],c:[1,0],o:[0,-1],len:900},
+  {name:'Quarto meninos 2',rect:[18700,7000,19600,7160],h:[19600,7000],c:[-1,0],o:[0,-1],len:900},
+  {name:'Banheiro meninos porta 1',rect:[15800,4700,15960,5500],h:[15800,5500],c:[0,-1],o:[-1,0],len:800},
+  {name:'Banheiro meninos porta 2',rect:[17500,5500,17660,6300],h:[17660,5500],c:[0,1],o:[1,0],len:800}
 ];
 // Grandes portas de vidro para o alpendre dos fundos.
 const SLIDES = [
   {name:'Portas de vidro estar',rect:[600,6760,4600,7000],v:false},
   {name:'Portas de vidro jantar',rect:[5400,6760,8800,7000],v:false},
-  {name:'Portas de vidro cozinha',rect:[9600,6760,12400,7000],v:false}
+  {name:'Portas de vidro cozinha',rect:[9200,6760,10500,7000],v:false}
 ];
 const R = (x0,y0,x1,y1) => [[x0,y0],[x1,y0],[x1,y1],[x0,y1]];
 const ROOMS = [
-  {id:'quintal', name:'Quintal livre', poly:R(-1000,-2500,10500,5400), mat:'grass', at:[4600,900], counted:false, outdoor:true},
-  {id:'alpendre', name:'Alpendre dos fundos', poly:R(0,5400,10500,7000), mat:'terracotta', at:[5200,6200], counted:false},
-  {id:'garagem_coberta', name:'Garagem coberta', poly:R(18000,9500,23600,15000), mat:'concrete', at:[20800,12250], counted:false, outdoor:true},
-  {id:'vagas_descobertas', name:'Vagas descobertas', poly:R(18000,3900,23600,9500), mat:'concrete', at:[20800,6700], counted:false, outdoor:true},
-  {id:'varal', name:'Varal reservado', poly:R(5200,15000,9000,17000), mat:'concrete', at:[7100,16000], counted:false, outdoor:true},
+  {id:'quintal', name:'Quintal livre', poly:R(-1600,-3500,10500,4500), mat:'grass', at:[4700,400], counted:false, outdoor:true},
+  {id:'alpendre', name:'Alpendre dos fundos', poly:R(0,4500,10500,7000), mat:'terracotta', at:[5200,5900], counted:false},
+  {id:'garagem_coberta', name:'Garagem coberta', poly:R(11000,15500,16600,21000), mat:'concrete', at:[13800,18250], counted:false, outdoor:true},
+  {id:'vagas_descobertas', name:'Vagas descobertas', poly:R(16600,15500,22200,21000), mat:'concrete', at:[19400,18250], counted:false, outdoor:true},
+  {id:'varal', name:'Varal reservado', poly:R(6200,15500,9800,17500), mat:'concrete', at:[8000,16500], counted:false, outdoor:true},
 
   {id:'estar', name:'Estar leitura sem TV', poly:R(0,7000,5200,12500), mat:'tile800', at:[2550,9550]},
   {id:'jantar', name:'Jantar extensível', poly:R(5200,7000,9000,12500), mat:'tile800', at:[7100,9550]},
-  {id:'cozinha', name:'Cozinha aberta', poly:R(9000,7000,12800,12500), mat:'tile600', at:[10900,9550]},
-  {id:'despensa', name:'Despensa', poly:R(12800,7000,15000,8500), mat:'tile600', at:[13900,7800]},
-  {id:'lavabo', name:'Lavabo social', poly:R(15000,7000,18000,8500), mat:'antislip', at:[16500,7800]},
-  {id:'suite_hospedes', name:'Suíte hóspedes', poly:R(12800,8500,15800,12500), mat:'wood', at:[14300,11350]},
-  {id:'banho_hospedes', name:'Banho hóspedes', poly:R(15800,8500,18000,10500), mat:'antislip', at:[16900,9600]},
-  {id:'homeschool', name:'Homeschooling / trabalho / biblioteca', poly:R(0,12500,5200,15000), mat:'wood', at:[2600,13750]},
-  {id:'lavanderia', name:'Lavanderia fechada', poly:R(5200,12500,9000,15000), mat:'antislip', at:[7100,13800]},
-  {id:'deposito', name:'Depósito doméstico', poly:R(9000,12500,10500,15000), mat:'tile600', at:[9750,13800]},
-  {id:'mudroom', name:'Entrada garagem / mudroom hipótese', poly:R(10500,12500,12800,15000), mat:'tile600', at:[11650,13800]},
+  {id:'cozinha', name:'Cozinha aberta', poly:[[9000,7000],[10500,7000],[10500,8200],[12300,8200],[12300,12500],[9000,12500]], mat:'tile600', at:[10800,10100]},
+  {id:'despensa', name:'Despensa', poly:R(12300,8200,14500,9700), mat:'tile600', at:[13400,8950]},
+  {id:'lavabo', name:'Lavabo social', poly:R(12300,9700,14500,11200), mat:'antislip', at:[13400,10450]},
+  {id:'suite_hospedes', name:'Suíte hóspedes', poly:R(12300,11200,15800,15500), mat:'wood', at:[14050,13800]},
+  {id:'banho_hospedes', name:'Banho hóspedes', poly:R(15800,11200,18000,13400), mat:'antislip', at:[16900,12300]},
+  {id:'homeschool', name:'Homeschooling / trabalho / biblioteca', poly:R(0,12500,6200,15500), mat:'wood', at:[3100,14000]},
+  {id:'lavanderia', name:'Lavanderia fechada', poly:R(6200,12500,9800,15500), mat:'antislip', at:[8000,14000]},
+  {id:'deposito', name:'Depósito doméstico', poly:R(9800,12500,10800,15500), mat:'tile600', at:[10300,14000]},
+  {id:'mudroom', name:'Entrada garagem / mudroom hipótese', poly:R(10800,12500,12300,15500), mat:'tile600', at:[11550,14000]},
 
-  {id:'hall_intimo', name:'Circulação íntima reservada', poly:[[10500,0],[12300,0],[12300,6500],[21000,6500],[21000,7000],[10500,7000]], mat:'tile800', at:[11350,3400]},
-  {id:'suite_casal', name:'Suíte casal', poly:R(12300,0,18000,3500), mat:'wood', at:[15150,2200]},
-  {id:'banho_casal', name:'Banho casal', poly:R(18000,0,21000,2200), mat:'antislip', at:[19500,1200]},
-  {id:'closet_casal', name:'Closet casal', poly:R(18000,2200,21000,3500), mat:'wood', at:[19500,3000]},
-  {id:'quarto_meninos_1', name:'Quarto meninos 1', poly:R(12300,3500,15650,6500), mat:'wood', at:[13975,5050]},
-  {id:'banho_meninos', name:'Banheiro dos meninos - duas cubas', poly:R(15650,3500,17350,6500), mat:'antislip', at:[16500,5050]},
-  {id:'quarto_meninos_2', name:'Quarto meninos 2', poly:R(17350,3500,21000,6500), mat:'wood', at:[19175,5050]}
+  {id:'hall_intimo', name:'Circulação íntima reservada', poly:[[10500,0],[12300,0],[12300,7000],[21000,7000],[21000,8200],[10500,8200]], mat:'tile800', at:[11400,4000]},
+  {id:'suite_casal', name:'Suíte casal', poly:R(12300,0,18500,3000), mat:'wood', at:[15400,1850]},
+  {id:'banho_casal', name:'Banho casal', poly:R(18500,0,21000,1800), mat:'antislip', at:[19750,1000]},
+  {id:'closet_casal', name:'Closet casal', poly:R(18500,1800,21000,3000), mat:'wood', at:[19750,2500]},
+  {id:'quarto_meninos_1', name:'Quarto meninos 1', poly:R(12300,3500,15800,7000), mat:'wood', at:[14050,5350]},
+  {id:'banho_meninos', name:'Banheiro dos meninos - duas cubas', poly:R(15800,3500,17500,7000), mat:'antislip', at:[16650,5350]},
+  {id:'quarto_meninos_2', name:'Quarto meninos 2', poly:R(17500,3500,21000,7000), mat:'wood', at:[19250,5350]}
 ];
 const MATS = {
   wood:    {name:'Piso amadeirado', price:180, sw:'#d8b88a'},
@@ -503,10 +505,10 @@ function defaultFurniture(){ return [
   F('chair','Cadeira jantar',6150,9000,450,480),F('chair','Cadeira jantar',6950,9000,450,480),
   F('chair','Cadeira jantar',7750,9000,450,480),F('chair','Cadeira jantar',6150,10400,450,480,180),
   F('chair','Cadeira jantar',6950,10400,450,480,180),F('chair','Cadeira jantar',7750,10400,450,480,180),
-  F('island','Ilha de preparo',10900,10100,2900,1050),
-  F('barstool','Banqueta rápida',10050,10950,420,420),F('barstool','Banqueta rápida',10900,10950,420,420),F('barstool','Banqueta rápida',11750,10950,420,420),
-  F('counter','Bancada cozinha',10900,7350,3500,600),
-  F('stove','Fogão',10000,7350,750,450),F('ksink','Pia cozinha',11600,7350,800,450),F('fridge','Geladeira',12400,8250,910,700,90),
+  F('island','Ilha de preparo',10750,10450,2400,1050),
+  F('barstool','Banqueta rápida',9950,11300,420,420),F('barstool','Banqueta rápida',10750,11300,420,420),F('barstool','Banqueta rápida',11550,11300,420,420),
+  F('counter','Bancada cozinha',9750,7350,1500,600),
+  F('stove','Fogão',9300,7350,750,450),F('ksink','Pia cozinha',10150,7350,800,450),F('fridge','Geladeira',11900,8750,910,700,90),
   F('cabinet','Apoio jantar',8650,11850,1600,400,180),
 
   // Alpendre, churrasqueira simples e quintal livre.
@@ -524,28 +526,28 @@ function defaultFurniture(){ return [
   F('bookshelf','Biblioteca principal',4850,13750,2200,350,90),
 
   // Serviço e apoio.
-  F('washer','Máquina lavar',5850,14550,600,600,180),F('dryer','Secadora',6650,14550,600,600,180),
-  F('vanity','Tanque',8300,14500,800,500,180),F('cabinet','Armário lavanderia',5450,13250,1200,400,90),
-  F('cabinet','Depósito doméstico',9750,13750,1000,1800),F('shoecab','Banco mudroom hipótese',11650,14550,1400,380,180),
-  F('cabinet','Despensa mantimentos',13900,7750,1700,850),F('toilet','Vaso lavabo',17100,7750,400,700,90),F('vanity','Cuba lavabo',15700,7750,800,500,90),
+  F('washer','Máquina lavar',6800,14550,600,600,180),F('dryer','Secadora',7600,14550,600,600,180),
+  F('vanity','Tanque',9000,14500,800,500,180),F('cabinet','Armário lavanderia',6500,13250,1200,400,90),
+  F('cabinet','Depósito doméstico',10300,14000,900,2100),F('shoecab','Banco mudroom hipótese',11550,14550,1300,380,180),
+  F('cabinet','Despensa mantimentos',13400,8900,1700,850),F('toilet','Vaso lavabo',14000,10400,400,700,90),F('vanity','Cuba lavabo',12750,10400,800,500,90),
 
   // Suíte de hóspedes integrada e afastada.
-  F('bed','Cama hóspedes',14300,10900,1500,2000),F('wardrobe','Armário hóspedes',13200,8900,1800,600,90),
-  F('desk','Apoio hóspedes',15450,12050,1200,500,180),F('shower','Box hóspedes',16300,9200,900,900),
-  F('toilet','Vaso hóspedes',17450,9250,400,700,90),F('vanity','Cuba hóspedes',16900,10200,800,500,180),
+  F('bed','Cama hóspedes',14100,13750,1500,2000),F('wardrobe','Armário hóspedes',12600,12300,1800,600,90),
+  F('desk','Apoio hóspedes',15200,14900,1200,500,180),F('shower','Box hóspedes',16300,12300,900,900),
+  F('toilet','Vaso hóspedes',17600,12300,400,700,90),F('vanity','Cuba hóspedes',16900,13100,800,500,180),
 
   // Ala íntima familiar.
   F('bed','Cama casal',15150,1350,1800,2000),F('nightstand','Criado-mudo',13700,750,450,400),F('nightstand','Criado-mudo',16600,750,450,400),
-  F('wardrobe','Closet casal',19500,2850,2400,600),F('shower','Box casal',18600,700,900,900),F('toilet','Vaso casal',20400,750,400,700,90),F('vanity','Cuba casal',19500,1850,1200,500,180),
+  F('wardrobe','Closet casal',19750,2400,2200,500),F('shower','Box casal',19000,650,900,900),F('toilet','Vaso casal',20500,700,400,700,90),F('vanity','Cuba casal',19750,1500,1200,500,180),
   F('bed','Cama menino',13050,4550,900,1950,0,'#e8d5b5'),F('bed','Cama menino',14900,4550,900,1950,0,'#d8c7dc'),
-  F('wardrobe','Armário meninos 1',13975,3800,1800,550),F('desk','Mesa quarto 1',15150,6100,1100,550,180),
+  F('wardrobe','Armário meninos 1',13975,6600,1800,550),F('desk','Mesa quarto 1',15150,6100,1100,550,180),
   F('bed','Cama menino',18100,4550,900,1950,0,'#e8d5b5'),F('bed','Cama menino',19950,4550,900,1950,0,'#d8c7dc'),
-  F('wardrobe','Armário meninos 2',19175,3800,1800,550),F('desk','Mesa quarto 2',17750,6100,1100,550,180),
-  F('vanity','Bancada duas cubas',16500,3820,1500,500),F('shower','Box meninos',16050,5900,850,850),F('toilet','Vaso meninos',17100,5950,400,700,270),
+  F('wardrobe','Armário meninos 2',19175,6600,1800,550),F('desk','Mesa quarto 2',17850,6100,1100,550,180),
+  F('vanity','Bancada duas cubas',16650,3820,1500,500),F('shower','Box meninos',16300,5900,850,850),F('toilet','Vaso meninos',17200,5950,400,700,270),
 
   // Vagas.
-  F('counter','Carro vaga coberta 1',19350,11600,2200,4300),F('counter','Carro vaga coberta 2',22250,11600,2200,4300),
-  F('counter','Carro vaga descoberta 1',19350,6700,2200,4300),F('counter','Carro vaga descoberta 2',22250,6700,2200,4300),
+  F('counter','Carro vaga coberta 1',12450,18250,2200,4300),F('counter','Carro vaga coberta 2',15150,18250,2200,4300),
+  F('counter','Carro vaga descoberta 1',18050,18250,2200,4300),F('counter','Carro vaga descoberta 2',20750,18250,2200,4300),
 ];}
 
 function defaultState(){
@@ -553,7 +555,7 @@ function defaultState(){
   return {furniture:defaultFurniture(), rooms, demolished:[], measures:[]};
 }
 
-const STORE = 'nossa-casa-design-v1';
+const STORE = 'nossa-casa-design-v2';
 function load(){
   try { const s = JSON.parse(localStorage.getItem(STORE)); if (s && Array.isArray(s.furniture)) return fixState(s); } catch(e) {}
   return null;
@@ -569,13 +571,14 @@ const PX_MM = 25.4 / 96;                       // 1 CSS px = 0.2646 mm
 const COARSE = matchMedia('(pointer:coarse)').matches;   // iPad / 手机等触屏为主的设备
 const TAP = COARSE ? 9 : 4;                    // 手指按下后移动超过该像素才算拖动
 const narrow = () => matchMedia('(max-width:1100px)').matches;
-const BOUNDS = {x:-1800, y:-3200, w:26200, h:21200};
+const BOUNDS = {x:-1800, y:-3600, w:25800, h:25800};
 const $ = s => document.querySelector(s);
 const svg = $('#plan');
 
 
 /* ======================= 状态 / 历史 / 存储 ======================= */
 let state = load() || defaultState();
+window.NOSSA_CASA_TEST = { getState: () => JSON.parse(JSON.stringify(state)) };
 const ui = {tool:'select', sel:null, mA:null, mCur:null,
   layers:{dims:true, labels:true, furn:true, grid:false, bearing:false, wallSnap:true}};
 let view = {x0:0, y0:0, s:.06};
@@ -794,8 +797,8 @@ function renderOpenings(){
     if (v){ const L = y1-y0, m = (x0+x1)/2; s += `<rect x="${m-45}" y="${y0}" width="40" height="${L*.55}" fill="#fff" ${DS}/><rect x="${m+5}" y="${y1-L*.55}" width="40" height="${L*.55}" fill="#fff" ${DS}/>`; }
     else { const L = x1-x0, m = (y0+y1)/2; s += `<rect x="${x0}" y="${m-45}" width="${L*.55}" height="40" fill="#fff" ${DS}/><rect x="${x1-L*.55}" y="${m+5}" width="${L*.55}" height="40" fill="#fff" ${DS}/>`; }
   });
-  s += `<path d="M2700 16400V15300M2520 15600L2700 15300L2880 15600" fill="none" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke"/>
-        <text x="2700" y="16650" font-size="220" text-anchor="middle" fill="#b5653a">${tr('Entrada social','Social entry')}</text>
+  s += `<path d="M-900 10000H150M-150 9820L150 10000L-150 10180" fill="none" stroke="#b5653a" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        <text x="-650" y="10600" font-size="220" text-anchor="middle" fill="#b5653a">${tr('Entrada social','Social entry')}</text>
         <path d="M11600 16400V15300M11420 15600L11600 15300L11780 15600" fill="none" stroke="#2f5d62" stroke-width="2" vector-effect="non-scaling-stroke"/>
         <text x="11600" y="16650" font-size="220" text-anchor="middle" fill="#2f5d62">${tr('Entrada garagem','Garage entry')}</text>`;
   $('#gOpen').innerHTML = s;
@@ -825,10 +828,10 @@ function renderDims(){
   };
   const g = $('#gDims');
   g.innerHTML =
-    chain(true,-850,10500,[1800,5700,3000]) + chain(true,-1350,10500,[10500]) +
-    chain(true,15650,0,[5200,3800,3800,5200]) + chain(true,17150,18000,[5600]) +
-    chain(false,-850,7000,[5500,2500]) + chain(false,-1350,-2500,[7900,1600,8000]) +
-    chain(false,21550,0,[3500,3000,500]) + chain(false,24150,3900,[5600,5500]);
+    chain(true,-850,10500,[1800,3500,1700,3500]) + chain(true,-1350,12300,[6200,2500]) +
+    chain(true,15650,0,[6200,3600,2500,2200,3500,2200]) + chain(true,21450,11000,[5600,5600]) +
+    chain(false,-850,4500,[2500,5500,3000]) + chain(false,-1350,-3000,[7500,2500]) +
+    chain(false,21550,0,[3000,500,3500,1200]) + chain(false,23000,15500,[5500]);
   g.setAttribute('display', ui.layers.dims ? 'inline' : 'none');
 }
 
@@ -1540,7 +1543,7 @@ import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {CSS2DRenderer, CSS2DObject} from 'three/addons/renderers/CSS2DRenderer.js';
 
 const stage = $('#stage'), host = $('#view3d');
-const OX = 11200, OY = 7350, H = 2.8, FOV = 45;
+const OX = 10400, OY = 8800, H = 2.8, FOV = 45;
 const wx = x => (x - OX) / 1000, wz = y => (y - OY) / 1000, M = v => v / 1000;
 const SW = () => stage.clientWidth, SH = () => stage.clientHeight;
 const opt = {cut:2.8, furn:true, labels:true, night:false, hour:10, mode:'orbit'};
@@ -2595,7 +2598,7 @@ function setMode(m){
     window.select(null);
     if (opt.cut < H){ opt.cut = H; syncCutBtns(); sync(); }
     orbit.enabled = false; fly = null;
-    camera.position.set(wx(2700), 1.6, wz(15800)); camera.lookAt(wx(6500), 1.5, wz(9800));
+    camera.position.set(wx(-900), 1.6, wz(10000)); camera.lookAt(wx(2800), 1.5, wz(9900));
     $('#walkOverlay').style.display = 'flex';
     syncHint3d();
   } else {

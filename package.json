@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "node scripts/validate-nossa-casa.mjs",
+    "test": "node scripts/validate-nossa-casa.mjs && node scripts/validate-geometry.mjs",
     "capture": "node scripts/capture-screenshots.mjs"
   },
   "devDependencies": {
