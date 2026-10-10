@@ -1,89 +1,58 @@
-# Floor Plan Interior Designer
+# Nossa Casa 3D
 
-[中文](README.md) | English
+Local 2D/3D prototype for reviewing the preliminary internal layout of **Nossa Casa**, based on the original Floorplan 3D app and preserving the MIT license.
 
-A pure front-end tool for interior design on a floor plan: place furniture, remove or modify walls, and take measurements on a 2D plan, then switch to a Three.js 3D scene with one click — view it from above or walk through it in first person. The whole app is a single `index.html`: no build step, just open it.
+This version implements option A: a single-story L-shaped house, open kitchen connected to dining/living, large glass doors to the rear porch, free backyard, reserved family bedroom wing, integrated guest suite, and a homeschooling/work/library room inside the house.
 
-## Features
+## Study Status
 
-**2D Floor Plan**
-- Displays the original floor plan at 1:60 / 1:100 scale, dimensions in mm
-- Drag 60+ furniture and appliance items from the library on the left (bedroom, living room, dining & kitchen, bathroom, appliances, study & leisure)
-- Move, rotate (hold Shift for free angle), and resize items, with automatic snapping to walls
-- Measuring tool (snaps to nearby walls; hold Shift to lock horizontal / vertical)
-- Remove or modify non-load-bearing walls; load-bearing walls are marked separately
-- Layer toggles: dimensions, room names, furniture, grid, load-bearing walls
+The displayed dimensions and areas are **PROVISIONAL ASSUMPTIONS** for visualization and family discussion. They are not an approved floor plan, construction document, site-fit verification, structural design, budget, setback study, solar orientation study, or code compliance check.
 
-**3D Scene**
-- Bird's-eye, oblique, and top-down views; click a room in the list to fly to it
-- Walkthrough mode: WASD + mouse on desktop, virtual joystick on touch devices; click doors to open / close them
-- Toggle between full-height and cut-away walls, time-of-day sunlight slider, night lighting
-- Detailed furniture models: cabinet door gaps and handles, upholstered headboards, metal and ceramic materials with environment reflections, and more
-- Select and drag furniture in 3D as well, kept in sync with the 2D plan in real time
-
-**Plans & Statistics**
-- Automatic calculation of room areas and net usable floor area
-- Change the floor material of each room (wood, tiles, marble, terrazzo, carpet, etc.), with cost estimates based on area plus 5% wastage
-- Undo / redo; plans are auto-saved in the browser's local storage
-- Chinese / English UI toggle (button on the right of the top bar; defaults to Chinese and remembers your choice)
-- Export to PNG, export / import plans as JSON
-
-## Quick Start
+## Opening Locally
 
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+python3 -m http.server 5173
 ```
 
-Then simply open `index.html` in your browser. Alternatively, start a local static server:
+Open `http://127.0.0.1:5173`.
+
+The 2D plan can also be opened directly from `index.html`. The 3D view needs internet access because Three.js is loaded from a CDN.
+
+## Navigation
+
+- `Planta 2D`: pan by dragging empty space, zoom with the mouse wheel, click rooms/furniture to select.
+- `Cena 3D`: top button switches to the navigable model; use `Orbitar`, `Topo`, and `Aérea`.
+- `Passeio`: first-person mode with `WASD`, mouse look, `Shift` to move faster, and `E` for doors.
+- `Arquivo`: exports PNG and JSON; imports a reopenable JSON file.
+- `dados/nossa-casa-projeto-v1.json`: initial exported project state.
+
+## Generated Deliverables
+
+- `capturas/01-planta-2d.png`
+- `capturas/02-3d-aerea.png`
+- `capturas/03-3d-social-alpendre.png`
+- `dados/nossa-casa-projeto-v1.json`
+- `RELATORIO_DE_VALIDACAO.md`
+
+## Reference Files
+
+Package documents are stored in `referencias/`. Decision priority is defined in `AGENTS.md`, especially:
+
+1. Approved needs program.
+2. Distribution study v0.4, with option A selected for further development.
+3. Option A diagram as a relationship reference, not as a scale drawing.
+
+## Tests
 
 ```bash
-python3 -m http.server 8000
-# Visit http://localhost:8000
+npm test
+npm run capture
 ```
 
-> Three.js is loaded from the jsDelivr CDN, so an internet connection is required the first time you open the 3D scene.
+The first command validates core project markers. The second opens a browser, verifies WebGL, creates screenshots, and exports the reopenable JSON file.
 
-## Keyboard Shortcuts
+## Original Base
 
-| Key | Action |
-| --- | --- |
-| `T` | Toggle 2D / 3D |
-| `V` / `M` / `X` | Select / Measure / Modify walls |
-| `R` / `Shift+R` | Rotate selected furniture 90° clockwise / counterclockwise |
-| `Delete` / `Backspace` | Delete selected furniture |
-| `Ctrl/⌘ + D` | Duplicate selected furniture |
-| `Ctrl/⌘ + Z`, `Ctrl/⌘ + Shift + Z` | Undo, redo |
-| `F` | Fit to window |
-| `+` / `-` | Zoom in / out |
-| `[` / `]` | Show / hide the furniture library (left) and the side panel (right) |
-| `Shift + F` | Fullscreen |
-| `Esc` | Cancel current action |
-| Walkthrough: `WASD` / arrow keys, `Shift`, `E` | Move, walk faster, open / close doors |
+Original project: `https://github.com/wy51ai/floorplan-3d`.
 
-## Tech Stack
-
-- Vanilla HTML / CSS / JavaScript — no framework, no build step
-- 2D floor plan rendered with SVG
-- 3D scene built with [Three.js](https://threejs.org/) r160 (OrbitControls, PointerLockControls, RoundedBoxGeometry, RoomEnvironment, CSS2DRenderer)
-- Data stored in `localStorage`
-
-## Customizing the Floor Plan
-
-The floor plan data lives in `index.html`:
-
-- `ROOMS`: room polygons, names, and default floor materials
-- `WALLS` / `WINS`: walls and window openings
-- `MATS`: floor material names and unit prices
-- `LIB`: furniture library (type, name, default size, color)
-- `buildFurniture()`: 3D models for each furniture type
-
-Edit this data to use your own floor plan.
-
-## Social Media
-
-- X (Twitter): [@akokoi1](https://x.com/akokoi1)
-
-## License
-
-[MIT](LICENSE)
+Preserved license: [MIT](LICENSE).
