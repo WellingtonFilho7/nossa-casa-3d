@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 import { extname, join, resolve } from 'node:path';
 
 const outDir = 'capturas';
-const jsonPath = 'dados/nossa-casa-projeto-v2.json';
+const jsonPath = 'dados/nossa-casa-projeto-v3.json';
 mkdirSync(outDir, { recursive: true });
 mkdirSync('dados', { recursive: true });
 

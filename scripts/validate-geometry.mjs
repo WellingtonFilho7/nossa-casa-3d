@@ -52,6 +52,17 @@ const bbox = (poly) => {
   return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
 };
 const rectArea = ([x0, y0, x1, y1]) => Math.max(0, x1 - x0) * Math.max(0, y1 - y0);
+function rectIntersection(a, b) {
+  return [
+    Math.max(a[0], b[0]),
+    Math.max(a[1], b[1]),
+    Math.min(a[2], b[2]),
+    Math.min(a[3], b[3])
+  ];
+}
+function blockedArea(rect) {
+  return WALLS.reduce((sum, wall) => sum + rectArea(rectIntersection(rect, wall.slice(0, 4))), 0);
+}
 function contains(poly, x, y) {
   let inside = false;
   for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
@@ -91,6 +102,9 @@ const expectedDoors = new Map([
   ['Entrada garagem', ['garagem_coberta', 'mudroom']],
   ['Porta lavanderia', ['jantar', 'lavanderia']],
   ['Saída lavanderia varal', ['lavanderia', 'varal']],
+  ['Mudroom interno', ['cozinha', 'mudroom']],
+  ['Depósito serviço', ['deposito', 'lavanderia']],
+  ['Passagem ala íntima', ['cozinha', 'hall_intimo']],
   ['Despensa', ['cozinha', 'despensa']],
   ['Lavabo social', ['cozinha', 'lavabo']],
   ['Suíte hóspedes', ['cozinha', 'suite_hospedes']],
@@ -109,6 +123,55 @@ const expectedDoors = new Map([
 for (const [name, expected] of expectedDoors) {
   const failure = hasExpectedConnection(name, expected);
   if (failure) failures.push(failure);
+}
+
+const doorsAndSlides = [...DOORS, ...SLIDES];
+for (const d of doorsAndSlides) {
+  const area = rectArea(d.rect);
+  const blocked = blockedArea(d.rect);
+  if (blocked > 1) {
+    failures.push(`vão de porta bloqueado por parede: ${d.name} (${(blocked / area * 100).toFixed(1)}%)`);
+  }
+}
+WINS.forEach((win, index) => {
+  const area = rectArea(win);
+  const blocked = blockedArea(win);
+  if (blocked > 1) {
+    failures.push(`vão de janela bloqueado por parede: WINS[${index}] (${(blocked / area * 100).toFixed(1)}%)`);
+  }
+});
+
+function reachableFrom(start) {
+  const graph = new Map();
+  const add = (a, b) => {
+    if (!graph.has(a)) graph.set(a, new Set());
+    if (!graph.has(b)) graph.set(b, new Set());
+    graph.get(a).add(b);
+    graph.get(b).add(a);
+  };
+  for (const d of doorsAndSlides) {
+    if (blockedArea(d.rect) > 1) continue;
+    const [a, b] = doorSides(d);
+    if (a !== b) add(a, b);
+  }
+  const seen = new Set([start]);
+  const queue = [start];
+  while (queue.length) {
+    const node = queue.shift();
+    for (const next of graph.get(node) || []) {
+      if (!seen.has(next)) {
+        seen.add(next);
+        queue.push(next);
+      }
+    }
+  }
+  return seen;
+}
+const accessTargets = ROOMS.filter((room) => room.counted !== false).map((room) => room.id);
+for (const [label, start] of [['entrada social', 'estar'], ['entrada garagem', 'mudroom']]) {
+  const seen = reachableFrom(start);
+  const missing = accessTargets.filter((roomId) => !seen.has(roomId));
+  if (missing.length) failures.push(`grafo de acessibilidade desde ${label} não alcança: ${missing.join(', ')}`);
 }
 
 const internal = ROOMS.filter((r) => r.counted !== false);
@@ -163,16 +226,21 @@ for (const [roomId, min] of minAreas) {
   if (actual < min) failures.push(`${roomId} com ${actual.toFixed(2)} m²; mínimo de estudo ${min.toFixed(2)} m²`);
 }
 
-const report = [...DOORS, ...SLIDES].map((d) => ({
+const report = doorsAndSlides.map((d) => ({
   name: d.name || 'Porta de correr sem nome',
-  sides: doorSides(d)
+  sides: doorSides(d),
+  blockedWallPercent: Number((blockedArea(d.rect) / rectArea(d.rect) * 100).toFixed(1))
 }));
 const output = {
   doors: report,
+  windows: WINS.map((win, index) => ({
+    index,
+    blockedWallPercent: Number((blockedArea(win) / rectArea(win) * 100).toFixed(1))
+  })),
   areasM2: Object.fromEntries(ROOMS.map((room) => [room.id, Number(areaM2(room.poly).toFixed(2))]))
 };
 mkdirSync('dados', { recursive: true });
-writeFileSync('dados/relatorio-portas-v2.json', JSON.stringify(output, null, 2) + '\n');
+writeFileSync('dados/relatorio-portas-v3.json', JSON.stringify(output, null, 2) + '\n');
 console.log(JSON.stringify(output, null, 2));
 
 if (failures.length) {

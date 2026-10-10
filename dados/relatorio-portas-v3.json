@@ -1,0 +1,248 @@
+{
+  "doors": [
+    {
+      "name": "Entrada social",
+      "sides": [
+        "estar",
+        "exterior"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Entrada garagem",
+      "sides": [
+        "garagem_coberta",
+        "mudroom"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Porta homeschooling",
+      "sides": [
+        "estar",
+        "homeschool"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Porta lavanderia",
+      "sides": [
+        "jantar",
+        "lavanderia"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Saída lavanderia varal",
+      "sides": [
+        "lavanderia",
+        "varal"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Mudroom interno",
+      "sides": [
+        "cozinha",
+        "mudroom"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Depósito serviço",
+      "sides": [
+        "deposito",
+        "lavanderia"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Passagem ala íntima",
+      "sides": [
+        "cozinha",
+        "hall_intimo"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Suíte hóspedes",
+      "sides": [
+        "cozinha",
+        "suite_hospedes"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Banho hóspedes",
+      "sides": [
+        "banho_hospedes",
+        "suite_hospedes"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Lavabo social",
+      "sides": [
+        "cozinha",
+        "lavabo"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Despensa",
+      "sides": [
+        "cozinha",
+        "despensa"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Suíte casal",
+      "sides": [
+        "hall_intimo",
+        "suite_casal"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Banho casal",
+      "sides": [
+        "banho_casal",
+        "suite_casal"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Closet casal",
+      "sides": [
+        "closet_casal",
+        "suite_casal"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Quarto meninos 1",
+      "sides": [
+        "hall_intimo",
+        "quarto_meninos_1"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Quarto meninos 2",
+      "sides": [
+        "hall_intimo",
+        "quarto_meninos_2"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Banheiro meninos porta 1",
+      "sides": [
+        "banho_meninos",
+        "quarto_meninos_1"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Banheiro meninos porta 2",
+      "sides": [
+        "banho_meninos",
+        "quarto_meninos_2"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Portas de vidro estar",
+      "sides": [
+        "alpendre",
+        "estar"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Portas de vidro jantar",
+      "sides": [
+        "alpendre",
+        "jantar"
+      ],
+      "blockedWallPercent": 0
+    },
+    {
+      "name": "Portas de vidro cozinha",
+      "sides": [
+        "alpendre",
+        "cozinha"
+      ],
+      "blockedWallPercent": 0
+    }
+  ],
+  "windows": [
+    {
+      "index": 0,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 1,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 2,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 3,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 4,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 5,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 6,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 7,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 8,
+      "blockedWallPercent": 0
+    },
+    {
+      "index": 9,
+      "blockedWallPercent": 0
+    }
+  ],
+  "areasM2": {
+    "quintal": 96.8,
+    "alpendre": 26.25,
+    "garagem_coberta": 30.8,
+    "vagas_descobertas": 30.8,
+    "varal": 7.2,
+    "jardim_luz_intimo": 7.83,
+    "estar": 28.6,
+    "jantar": 20.9,
+    "cozinha": 15.99,
+    "despensa": 3.3,
+    "lavabo": 3.3,
+    "suite_hospedes": 15.05,
+    "banho_hospedes": 4.84,
+    "homeschool": 18.6,
+    "lavanderia": 10.8,
+    "deposito": 3,
+    "mudroom": 4.5,
+    "hall_intimo": 25.2,
+    "suite_casal": 16.12,
+    "banho_casal": 4,
+    "closet_casal": 2.5,
+    "quarto_meninos_1": 12.25,
+    "banho_meninos": 5.95,
+    "quarto_meninos_2": 12.25
+  }
+}

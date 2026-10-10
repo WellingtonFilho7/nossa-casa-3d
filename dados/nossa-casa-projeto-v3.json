@@ -1,0 +1,896 @@
+{
+  "furniture": [
+    {
+      "id": "fmv2xchw51",
+      "type": "rug",
+      "name": "Tapete estar",
+      "cx": 2600,
+      "cy": 9600,
+      "w": 3000,
+      "d": 2000,
+      "rot": 0,
+      "color": "#d9cbb8"
+    },
+    {
+      "id": "fmv2xchw52",
+      "type": "sofa",
+      "name": "Sofá conversa",
+      "cx": 2700,
+      "cy": 11350,
+      "w": 2600,
+      "d": 900,
+      "rot": 180,
+      "color": "#b7c4b0"
+    },
+    {
+      "id": "fmv2xchw53",
+      "type": "armchair",
+      "name": "Poltrona leitura",
+      "cx": 900,
+      "cy": 9000,
+      "w": 850,
+      "d": 850,
+      "rot": 90,
+      "color": "#d6b99a"
+    },
+    {
+      "id": "fmv2xchw54",
+      "type": "armchair",
+      "name": "Poltrona leitura",
+      "cx": 4200,
+      "cy": 9000,
+      "w": 850,
+      "d": 850,
+      "rot": 270,
+      "color": "#d6b99a"
+    },
+    {
+      "id": "fmv2xchw55",
+      "type": "coffeetable",
+      "name": "Mesa centro",
+      "cx": 2700,
+      "cy": 9900,
+      "w": 1300,
+      "d": 650,
+      "rot": 0,
+      "color": "#e8dccb"
+    },
+    {
+      "id": "fmv2xchw56",
+      "type": "bookshelf",
+      "name": "Livros acessíveis",
+      "cx": 450,
+      "cy": 11800,
+      "w": 1600,
+      "d": 350,
+      "rot": 90,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmv2xchw57",
+      "type": "table",
+      "name": "Mesa extensível 6 lugares",
+      "cx": 7050,
+      "cy": 9700,
+      "w": 2200,
+      "d": 950,
+      "rot": 90,
+      "color": "#d8c2a2"
+    },
+    {
+      "id": "fmv2xchw58",
+      "type": "chair",
+      "name": "Cadeira jantar",
+      "cx": 6150,
+      "cy": 9000,
+      "w": 450,
+      "d": 480,
+      "rot": 0,
+      "color": "#cfc6b8"
+    },
+    {
+      "id": "fmv2xchw59",
+      "type": "chair",
+      "name": "Cadeira jantar",
+      "cx": 6950,
+      "cy": 9000,
+      "w": 450,
+      "d": 480,
+      "rot": 0,
+      "color": "#cfc6b8"
+    },
+    {
+      "id": "fmv2xchw510",
+      "type": "chair",
+      "name": "Cadeira jantar",
+      "cx": 7750,
+      "cy": 9000,
+      "w": 450,
+      "d": 480,
+      "rot": 0,
+      "color": "#cfc6b8"
+    },
+    {
+      "id": "fmv2xchw511",
+      "type": "chair",
+      "name": "Cadeira jantar",
+      "cx": 6150,
+      "cy": 10400,
+      "w": 450,
+      "d": 480,
+      "rot": 180,
+      "color": "#cfc6b8"
+    },
+    {
+      "id": "fmv2xchw512",
+      "type": "chair",
+      "name": "Cadeira jantar",
+      "cx": 6950,
+      "cy": 10400,
+      "w": 450,
+      "d": 480,
+      "rot": 180,
+      "color": "#cfc6b8"
+    },
+    {
+      "id": "fmv2xchw513",
+      "type": "chair",
+      "name": "Cadeira jantar",
+      "cx": 7750,
+      "cy": 10400,
+      "w": 450,
+      "d": 480,
+      "rot": 180,
+      "color": "#cfc6b8"
+    },
+    {
+      "id": "fmv2xchw514",
+      "type": "island",
+      "name": "Ilha de preparo",
+      "cx": 10750,
+      "cy": 10450,
+      "w": 2400,
+      "d": 1050,
+      "rot": 0,
+      "color": "#e9e5de"
+    },
+    {
+      "id": "fmv2xchw515",
+      "type": "barstool",
+      "name": "Banqueta rápida",
+      "cx": 9950,
+      "cy": 11300,
+      "w": 420,
+      "d": 420,
+      "rot": 0,
+      "color": "#6b5d4c"
+    },
+    {
+      "id": "fmv2xchw516",
+      "type": "barstool",
+      "name": "Banqueta rápida",
+      "cx": 10750,
+      "cy": 11300,
+      "w": 420,
+      "d": 420,
+      "rot": 0,
+      "color": "#6b5d4c"
+    },
+    {
+      "id": "fmv2xchw517",
+      "type": "barstool",
+      "name": "Banqueta rápida",
+      "cx": 11550,
+      "cy": 11300,
+      "w": 420,
+      "d": 420,
+      "rot": 0,
+      "color": "#6b5d4c"
+    },
+    {
+      "id": "fmv2xchw518",
+      "type": "counter",
+      "name": "Bancada cozinha",
+      "cx": 9750,
+      "cy": 7350,
+      "w": 1500,
+      "d": 600,
+      "rot": 0,
+      "color": "#e9e5de"
+    },
+    {
+      "id": "fmv2xchw519",
+      "type": "stove",
+      "name": "Fogão",
+      "cx": 9300,
+      "cy": 7350,
+      "w": 750,
+      "d": 450,
+      "rot": 0,
+      "color": "#dcdcdc"
+    },
+    {
+      "id": "fmv2xchw520",
+      "type": "ksink",
+      "name": "Pia cozinha",
+      "cx": 10150,
+      "cy": 7350,
+      "w": 800,
+      "d": 450,
+      "rot": 0,
+      "color": "#e1e6ea"
+    },
+    {
+      "id": "fmv2xchw521",
+      "type": "fridge",
+      "name": "Geladeira",
+      "cx": 11900,
+      "cy": 8750,
+      "w": 910,
+      "d": 700,
+      "rot": 90,
+      "color": "#c9ced3"
+    },
+    {
+      "id": "fmv2xchw522",
+      "type": "cabinet",
+      "name": "Apoio jantar",
+      "cx": 8650,
+      "cy": 11850,
+      "w": 1600,
+      "d": 400,
+      "rot": 180,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw523",
+      "type": "counter",
+      "name": "Churrasqueira simples",
+      "cx": 1300,
+      "cy": 6050,
+      "w": 1600,
+      "d": 650,
+      "rot": 0,
+      "color": "#e9e5de"
+    },
+    {
+      "id": "fmv2xchw524",
+      "type": "table",
+      "name": "Mesa alpendre",
+      "cx": 4900,
+      "cy": 6150,
+      "w": 2200,
+      "d": 900,
+      "rot": 0,
+      "color": "#d8c2a2"
+    },
+    {
+      "id": "fmv2xchw525",
+      "type": "armchair",
+      "name": "Cadeira alpendre",
+      "cx": 7400,
+      "cy": 5900,
+      "w": 750,
+      "d": 800,
+      "rot": 0,
+      "color": "#d6b99a"
+    },
+    {
+      "id": "fmv2xchw526",
+      "type": "armchair",
+      "name": "Cadeira alpendre",
+      "cx": 8400,
+      "cy": 5900,
+      "w": 750,
+      "d": 800,
+      "rot": 0,
+      "color": "#d6b99a"
+    },
+    {
+      "id": "fmv2xchw527",
+      "type": "plant",
+      "name": "Quintal livre observável",
+      "cx": 4300,
+      "cy": 2300,
+      "w": 900,
+      "d": 900,
+      "rot": 0,
+      "color": "#8fac72"
+    },
+    {
+      "id": "fmv2xchw528",
+      "type": "plant",
+      "name": "Jardim de luz íntimo",
+      "cx": 16600,
+      "cy": 3050,
+      "w": 700,
+      "d": 700,
+      "rot": 0,
+      "color": "#8fac72"
+    },
+    {
+      "id": "fmv2xchw529",
+      "type": "desk",
+      "name": "Mesa longa trabalho",
+      "cx": 1450,
+      "cy": 13250,
+      "w": 2400,
+      "d": 700,
+      "rot": 0,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmv2xchw530",
+      "type": "officechair",
+      "name": "Posto adulto 1",
+      "cx": 850,
+      "cy": 13950,
+      "w": 620,
+      "d": 620,
+      "rot": 0,
+      "color": "#4a4f55"
+    },
+    {
+      "id": "fmv2xchw531",
+      "type": "officechair",
+      "name": "Posto adulto 2",
+      "cx": 2050,
+      "cy": 13950,
+      "w": 620,
+      "d": 620,
+      "rot": 0,
+      "color": "#4a4f55"
+    },
+    {
+      "id": "fmv2xchw532",
+      "type": "cabinet",
+      "name": "Impressora",
+      "cx": 3200,
+      "cy": 13200,
+      "w": 900,
+      "d": 500,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw533",
+      "type": "table",
+      "name": "Mesa estudos infantil",
+      "cx": 3650,
+      "cy": 13900,
+      "w": 2200,
+      "d": 900,
+      "rot": 90,
+      "color": "#d8c2a2"
+    },
+    {
+      "id": "fmv2xchw534",
+      "type": "table",
+      "name": "Mesa pequenos",
+      "cx": 1600,
+      "cy": 14600,
+      "w": 1200,
+      "d": 700,
+      "rot": 0,
+      "color": "#d8c2a2"
+    },
+    {
+      "id": "fmv2xchw535",
+      "type": "bookshelf",
+      "name": "Biblioteca principal",
+      "cx": 4850,
+      "cy": 13750,
+      "w": 2200,
+      "d": 350,
+      "rot": 90,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmv2xchw536",
+      "type": "washer",
+      "name": "Máquina lavar",
+      "cx": 6800,
+      "cy": 14550,
+      "w": 600,
+      "d": 600,
+      "rot": 180,
+      "color": "#e6ebee"
+    },
+    {
+      "id": "fmv2xchw537",
+      "type": "dryer",
+      "name": "Secadora",
+      "cx": 7600,
+      "cy": 14550,
+      "w": 600,
+      "d": 600,
+      "rot": 180,
+      "color": "#e6ebee"
+    },
+    {
+      "id": "fmv2xchw538",
+      "type": "vanity",
+      "name": "Tanque",
+      "cx": 9000,
+      "cy": 14500,
+      "w": 800,
+      "d": 500,
+      "rot": 180,
+      "color": "#eef1f3"
+    },
+    {
+      "id": "fmv2xchw539",
+      "type": "cabinet",
+      "name": "Armário lavanderia",
+      "cx": 6500,
+      "cy": 13250,
+      "w": 1200,
+      "d": 400,
+      "rot": 90,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw540",
+      "type": "cabinet",
+      "name": "Depósito doméstico",
+      "cx": 10300,
+      "cy": 14000,
+      "w": 900,
+      "d": 2100,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw541",
+      "type": "shoecab",
+      "name": "Banco mudroom hipótese",
+      "cx": 11550,
+      "cy": 14550,
+      "w": 1300,
+      "d": 380,
+      "rot": 180,
+      "color": "#e6dccc"
+    },
+    {
+      "id": "fmv2xchw542",
+      "type": "cabinet",
+      "name": "Despensa mantimentos",
+      "cx": 13400,
+      "cy": 8900,
+      "w": 1700,
+      "d": 850,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw543",
+      "type": "toilet",
+      "name": "Vaso lavabo",
+      "cx": 14000,
+      "cy": 10400,
+      "w": 400,
+      "d": 700,
+      "rot": 90,
+      "color": "#ffffff"
+    },
+    {
+      "id": "fmv2xchw544",
+      "type": "vanity",
+      "name": "Cuba lavabo",
+      "cx": 12750,
+      "cy": 10400,
+      "w": 800,
+      "d": 500,
+      "rot": 90,
+      "color": "#eef1f3"
+    },
+    {
+      "id": "fmv2xchw545",
+      "type": "bed",
+      "name": "Cama hóspedes",
+      "cx": 14100,
+      "cy": 13750,
+      "w": 1500,
+      "d": 2000,
+      "rot": 0,
+      "color": "#c9d6df"
+    },
+    {
+      "id": "fmv2xchw546",
+      "type": "wardrobe",
+      "name": "Armário hóspedes",
+      "cx": 12600,
+      "cy": 12300,
+      "w": 1800,
+      "d": 600,
+      "rot": 90,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw547",
+      "type": "desk",
+      "name": "Apoio hóspedes",
+      "cx": 15200,
+      "cy": 14900,
+      "w": 1200,
+      "d": 500,
+      "rot": 180,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmv2xchw548",
+      "type": "shower",
+      "name": "Box hóspedes",
+      "cx": 16300,
+      "cy": 12300,
+      "w": 900,
+      "d": 900,
+      "rot": 0,
+      "color": "#e4edf2"
+    },
+    {
+      "id": "fmv2xchw549",
+      "type": "toilet",
+      "name": "Vaso hóspedes",
+      "cx": 17600,
+      "cy": 12300,
+      "w": 400,
+      "d": 700,
+      "rot": 90,
+      "color": "#ffffff"
+    },
+    {
+      "id": "fmv2xchw550",
+      "type": "vanity",
+      "name": "Cuba hóspedes",
+      "cx": 16900,
+      "cy": 13100,
+      "w": 800,
+      "d": 500,
+      "rot": 180,
+      "color": "#eef1f3"
+    },
+    {
+      "id": "fmv2xchw551",
+      "type": "bed",
+      "name": "Cama casal",
+      "cx": 15150,
+      "cy": 1250,
+      "w": 1800,
+      "d": 2000,
+      "rot": 0,
+      "color": "#c9d6df"
+    },
+    {
+      "id": "fmv2xchw552",
+      "type": "nightstand",
+      "name": "Criado-mudo",
+      "cx": 13700,
+      "cy": 700,
+      "w": 450,
+      "d": 400,
+      "rot": 0,
+      "color": "#e8dccb"
+    },
+    {
+      "id": "fmv2xchw553",
+      "type": "nightstand",
+      "name": "Criado-mudo",
+      "cx": 16600,
+      "cy": 700,
+      "w": 450,
+      "d": 400,
+      "rot": 0,
+      "color": "#e8dccb"
+    },
+    {
+      "id": "fmv2xchw554",
+      "type": "wardrobe",
+      "name": "Closet casal",
+      "cx": 19750,
+      "cy": 2150,
+      "w": 2200,
+      "d": 500,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw555",
+      "type": "shower",
+      "name": "Box casal",
+      "cx": 19000,
+      "cy": 650,
+      "w": 900,
+      "d": 900,
+      "rot": 0,
+      "color": "#e4edf2"
+    },
+    {
+      "id": "fmv2xchw556",
+      "type": "toilet",
+      "name": "Vaso casal",
+      "cx": 20500,
+      "cy": 700,
+      "w": 400,
+      "d": 700,
+      "rot": 90,
+      "color": "#ffffff"
+    },
+    {
+      "id": "fmv2xchw557",
+      "type": "vanity",
+      "name": "Cuba casal",
+      "cx": 19750,
+      "cy": 1250,
+      "w": 1200,
+      "d": 500,
+      "rot": 180,
+      "color": "#eef1f3"
+    },
+    {
+      "id": "fmv2xchw558",
+      "type": "bed",
+      "name": "Cama menino",
+      "cx": 13050,
+      "cy": 4550,
+      "w": 900,
+      "d": 1950,
+      "rot": 0,
+      "color": "#e8d5b5"
+    },
+    {
+      "id": "fmv2xchw559",
+      "type": "bed",
+      "name": "Cama menino",
+      "cx": 14900,
+      "cy": 4550,
+      "w": 900,
+      "d": 1950,
+      "rot": 0,
+      "color": "#d8c7dc"
+    },
+    {
+      "id": "fmv2xchw560",
+      "type": "wardrobe",
+      "name": "Armário meninos 1",
+      "cx": 13975,
+      "cy": 6600,
+      "w": 1800,
+      "d": 550,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw561",
+      "type": "desk",
+      "name": "Mesa quarto 1",
+      "cx": 15150,
+      "cy": 6100,
+      "w": 1100,
+      "d": 550,
+      "rot": 180,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmv2xchw562",
+      "type": "bed",
+      "name": "Cama menino",
+      "cx": 18100,
+      "cy": 4550,
+      "w": 900,
+      "d": 1950,
+      "rot": 0,
+      "color": "#e8d5b5"
+    },
+    {
+      "id": "fmv2xchw563",
+      "type": "bed",
+      "name": "Cama menino",
+      "cx": 19950,
+      "cy": 4550,
+      "w": 900,
+      "d": 1950,
+      "rot": 0,
+      "color": "#d8c7dc"
+    },
+    {
+      "id": "fmv2xchw564",
+      "type": "wardrobe",
+      "name": "Armário meninos 2",
+      "cx": 19175,
+      "cy": 6600,
+      "w": 1800,
+      "d": 550,
+      "rot": 0,
+      "color": "#efe6d8"
+    },
+    {
+      "id": "fmv2xchw565",
+      "type": "desk",
+      "name": "Mesa quarto 2",
+      "cx": 17850,
+      "cy": 6100,
+      "w": 1100,
+      "d": 550,
+      "rot": 180,
+      "color": "#e2cfb4"
+    },
+    {
+      "id": "fmv2xchw566",
+      "type": "vanity",
+      "name": "Bancada duas cubas",
+      "cx": 16650,
+      "cy": 3820,
+      "w": 1500,
+      "d": 500,
+      "rot": 0,
+      "color": "#eef1f3"
+    },
+    {
+      "id": "fmv2xchw567",
+      "type": "shower",
+      "name": "Box meninos",
+      "cx": 16300,
+      "cy": 5900,
+      "w": 850,
+      "d": 850,
+      "rot": 0,
+      "color": "#e4edf2"
+    },
+    {
+      "id": "fmv2xchw568",
+      "type": "toilet",
+      "name": "Vaso meninos",
+      "cx": 17200,
+      "cy": 5950,
+      "w": 400,
+      "d": 700,
+      "rot": 270,
+      "color": "#ffffff"
+    },
+    {
+      "id": "fmv2xchw569",
+      "type": "counter",
+      "name": "Carro vaga coberta 1",
+      "cx": 12450,
+      "cy": 18250,
+      "w": 2200,
+      "d": 4300,
+      "rot": 0,
+      "color": "#e9e5de"
+    },
+    {
+      "id": "fmv2xchw570",
+      "type": "counter",
+      "name": "Carro vaga coberta 2",
+      "cx": 15150,
+      "cy": 18250,
+      "w": 2200,
+      "d": 4300,
+      "rot": 0,
+      "color": "#e9e5de"
+    },
+    {
+      "id": "fmv2xchw571",
+      "type": "counter",
+      "name": "Carro vaga descoberta 1",
+      "cx": 18050,
+      "cy": 18250,
+      "w": 2200,
+      "d": 4300,
+      "rot": 0,
+      "color": "#e9e5de"
+    },
+    {
+      "id": "fmv2xchw572",
+      "type": "counter",
+      "name": "Carro vaga descoberta 2",
+      "cx": 20750,
+      "cy": 18250,
+      "w": 2200,
+      "d": 4300,
+      "rot": 0,
+      "color": "#e9e5de"
+    }
+  ],
+  "rooms": {
+    "quintal": {
+      "name": "Quintal livre",
+      "mat": "grass"
+    },
+    "alpendre": {
+      "name": "Alpendre dos fundos",
+      "mat": "terracotta"
+    },
+    "garagem_coberta": {
+      "name": "Garagem coberta",
+      "mat": "concrete"
+    },
+    "vagas_descobertas": {
+      "name": "Vagas descobertas",
+      "mat": "concrete"
+    },
+    "varal": {
+      "name": "Varal reservado",
+      "mat": "concrete"
+    },
+    "jardim_luz_intimo": {
+      "name": "Jardim de luz íntimo",
+      "mat": "grass"
+    },
+    "estar": {
+      "name": "Estar leitura sem TV",
+      "mat": "tile800"
+    },
+    "jantar": {
+      "name": "Jantar extensível",
+      "mat": "tile800"
+    },
+    "cozinha": {
+      "name": "Cozinha aberta",
+      "mat": "tile600"
+    },
+    "despensa": {
+      "name": "Despensa",
+      "mat": "tile600"
+    },
+    "lavabo": {
+      "name": "Lavabo social",
+      "mat": "antislip"
+    },
+    "suite_hospedes": {
+      "name": "Suíte hóspedes",
+      "mat": "wood"
+    },
+    "banho_hospedes": {
+      "name": "Banho hóspedes",
+      "mat": "antislip"
+    },
+    "homeschool": {
+      "name": "Homeschooling / trabalho / biblioteca",
+      "mat": "wood"
+    },
+    "lavanderia": {
+      "name": "Lavanderia fechada",
+      "mat": "antislip"
+    },
+    "deposito": {
+      "name": "Depósito doméstico",
+      "mat": "tile600"
+    },
+    "mudroom": {
+      "name": "Entrada garagem / mudroom hipótese",
+      "mat": "tile600"
+    },
+    "hall_intimo": {
+      "name": "Circulação íntima reservada",
+      "mat": "tile800"
+    },
+    "suite_casal": {
+      "name": "Suíte casal",
+      "mat": "wood"
+    },
+    "banho_casal": {
+      "name": "Banho casal",
+      "mat": "antislip"
+    },
+    "closet_casal": {
+      "name": "Closet casal",
+      "mat": "wood"
+    },
+    "quarto_meninos_1": {
+      "name": "Quarto meninos 1",
+      "mat": "wood"
+    },
+    "banho_meninos": {
+      "name": "Banheiro dos meninos - duas cubas",
+      "mat": "antislip"
+    },
+    "quarto_meninos_2": {
+      "name": "Quarto meninos 2",
+      "mat": "wood"
+    }
+  },
+  "demolished": [],
+  "measures": []
+}

@@ -2,7 +2,7 @@
 
 Protótipo local 2D/3D para revisar a distribuição interna preliminar da **Nossa Casa**, usando o app Floorplan 3D original como base e mantendo a licença MIT.
 
-Esta versão implementa a alternativa A, revisada na v2: casa térrea em L, cozinha aberta integrada ao jantar/estar, grandes portas para o alpendre dos fundos, quintal livre, ala íntima reservada, suíte de hóspedes integrada e sala de homeschooling/trabalho/biblioteca dentro da casa.
+Esta versão implementa a alternativa A, revisada na v3: casa térrea em L, cozinha aberta integrada ao jantar/estar, grandes portas para o alpendre dos fundos, quintal livre, ala íntima reservada, suíte de hóspedes integrada e sala de homeschooling/trabalho/biblioteca dentro da casa.
 
 ## Estado do Estudo
 
@@ -24,15 +24,15 @@ Também é possível abrir `index.html` diretamente para a planta 2D. Para usar 
 - `Cena 3D`: botão no topo alterna para modelo navegável; use `Orbitar`, `Topo` e `Aérea`.
 - `Passeio`: modo de primeira pessoa com `WASD`, mouse para olhar, `Shift` para acelerar e `E` para portas.
 - `Arquivo`: exporta imagem PNG e JSON; importa o JSON reabrível.
-- `dados/nossa-casa-projeto-v2.json`: exportação inicial corrigida do protótipo.
+- `dados/nossa-casa-projeto-v3.json`: exportação inicial corrigida do protótipo.
 
 ## Entregas Geradas
 
 - `capturas/01-planta-2d.png`
 - `capturas/02-3d-aerea.png`
 - `capturas/03-3d-social-alpendre.png`
-- `dados/nossa-casa-projeto-v2.json`
-- `dados/relatorio-portas-v2.json`
+- `dados/nossa-casa-projeto-v3.json`
+- `dados/relatorio-portas-v3.json`
 - `RELATORIO_DE_VALIDACAO.md`
 
 ## Arquivos de Referência
@@ -50,7 +50,7 @@ npm test
 npm run capture
 ```
 
-O primeiro comando valida marcadores essenciais, conexões geométricas de portas, sobreposições, aberturas externas e áreas mínimas de estudo. O segundo abre um servidor local temporário, confere WebGL, gera capturas, exporta o JSON e importa o arquivo novamente para comparar o estado.
+O primeiro comando valida marcadores essenciais, conexões geométricas de portas, bloqueio físico de vãos, grafo de acessibilidade, sobreposições, aberturas externas e áreas mínimas de estudo. O segundo abre um servidor local temporário, confere WebGL, gera capturas, exporta o JSON e importa o arquivo novamente para comparar o estado.
 
 ## Base Original
 

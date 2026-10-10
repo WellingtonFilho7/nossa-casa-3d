@@ -1,30 +1,27 @@
-# Relatório de Validação | Nossa Casa 3D v2
+# Relatório de Validação | Nossa Casa 3D v3
 
 Data: 10/10/2026  
-Escopo: versão funcional corrigida a partir do relatório `06_RELATORIO_REVISAO_NOSSA_CASA_3D_v1.0.md` e do prompt `06_PROMPT_CORRECAO_CODEX_NOSSA_CASA_v2.md`.  
+Escopo: versão funcional corrigida a partir de `07_RELATORIO_REVISAO_NOSSA_CASA_3D_v2.0.md` e `07_PROMPT_CORRECAO_CODEX_NOSSA_CASA_v3.md`.  
 Importante: todas as dimensões, áreas e posições são **HIPÓTESES PROVISÓRIAS** para revisão familiar.
 
-## Erros da v1 Tratados na v2
+## Correções da v3
 
-| Item revisado | Correção aplicada |
+| Bloqueador da v2 | Ação aplicada na v3 |
 |---|---|
-| Lavabo acessava área errada | Lavabo passou a abrir para a área social/cozinha. |
-| Despensa acessava quarto de hóspedes | Despensa passou a abrir diretamente para a cozinha. |
-| Lavanderia e varal sem fluxo prático | Lavanderia agora recebe porta interna e saída própria para varal reservado. |
-| Garagem/vagas sobrepunham ambientes | Vagas foram movidas para a faixa externa inferior, sem sobreposição com dormitórios/circulação. |
-| Entrada social caía no homeschooling | Entrada social agora acessa o estar. |
-| Cozinha abria de forma incoerente | Cozinha permanece integrada ao jantar/estar e ganhou porta de vidro para o alpendre. |
-| Closet sem acesso claro pela suíte | Closet do casal agora tem porta pela suíte. |
-| Circulação íntima estreita | Hall íntimo foi redesenhado como circulação utilizável. |
-| Quarto 1 e suíte de hóspedes sem abertura externa | Ambos receberam aberturas para exterior/áreas abertas. |
-| Homeschool, alpendre e quartos pequenos | Homeschool, alpendre e quartos infantis foram ampliados como hipótese de estudo. |
-| Quintal tratado como desenho fechado | Quintal foi ampliado e marcado como área livre conceitual, não lote aprovado. |
+| Garagem -> mudroom sem caminho interno | Criada a porta `Mudroom interno`, conectando mudroom à cozinha/apoio diário. |
+| Depósito sem acesso verificável no grafo | Criada a porta `Depósito serviço`, conectando depósito à lavanderia. |
+| Ala íntima fora do grafo de acessibilidade | Criada a `Passagem ala íntima`, conectando cozinha/hall íntimo por vão real. |
+| Portas sobre paredes sólidas | Paredes foram segmentadas ao redor dos vãos de `Entrada garagem`, `Banho hóspedes`, `Lavabo social`, `Despensa` e demais portas. |
+| Janelas desenhadas sobre paredes maciças | Paredes externas foram segmentadas para deixar vãos físicos livres nas janelas. |
+| Quarto meninos 1 abria para faixa estreita | Criado `Jardim de luz íntimo` como hipótese de pátio linear externo para iluminação/ventilação do quarto. |
+| Janela da suíte de hóspedes voltada à garagem | A janela principal da suíte de hóspedes foi movida para a lateral leste, afastada das vagas cobertas. |
 
 ## Testes Realizados
 
-- `npm test`: OK.
+- Teste de regressão em estado v2: falhou como esperado, apontando `Entrada garagem`, `Banho hóspedes`, `Lavabo social`, `Despensa`, 7 janelas bloqueadas e grafo de acessibilidade incompleto.
+- `npm test`: OK após correção v3.
 - `node scripts/validate-nossa-casa.mjs`: OK, validou ambientes e marcadores principais.
-- `node scripts/validate-geometry.mjs`: OK, validou conexões reais de portas, ausência de sobreposição, aberturas externas dos dormitórios e áreas mínimas de estudo.
+- `node scripts/validate-geometry.mjs`: OK, validou adjacências, vãos físicos, janelas sem bloqueio, grafo de acessibilidade, sobreposições, aberturas externas e áreas mínimas.
 - `npm run capture`: OK, abriu o app em servidor local temporário, capturou 2D/3D, confirmou WebGL, exportou JSON e importou o mesmo arquivo.
 - Console do navegador durante captura: OK, sem mensagens.
 - Importação real do JSON: OK, `importMatchesExport: true`.
@@ -34,13 +31,18 @@ Importante: todas as dimensões, áreas e posições são **HIPÓTESES PROVISÓR
 - Planta 2D: `capturas/01-planta-2d.png`
 - Modelo 3D aéreo: `capturas/02-3d-aerea.png`
 - Modelo 3D social/alpendre: `capturas/03-3d-social-alpendre.png`
-- JSON exportado/importável: `dados/nossa-casa-projeto-v2.json`
-- Relatório automático de portas e áreas: `dados/relatorio-portas-v2.json`
+- JSON exportado/importável: `dados/nossa-casa-projeto-v3.json`
+- Relatório automático de portas, janelas e áreas: `dados/relatorio-portas-v3.json`
 
-## Validação de Portas Principais
+## Validação de Portas e Vãos
+
+Todas as portas e portas de correr ficaram com `blockedWallPercent: 0`.
 
 - Entrada social: exterior <-> estar.
 - Entrada pela garagem: garagem coberta <-> mudroom.
+- Mudroom interno: cozinha <-> mudroom.
+- Depósito serviço: lavanderia <-> depósito.
+- Passagem ala íntima: cozinha <-> hall íntimo.
 - Lavanderia: jantar <-> lavanderia.
 - Saída de serviço: lavanderia <-> varal.
 - Despensa: cozinha <-> despensa.
@@ -51,6 +53,12 @@ Importante: todas as dimensões, áreas e posições são **HIPÓTESES PROVISÓR
 - Closet casal: suíte casal <-> closet casal.
 - Banheiro dos meninos: duas portas diretas, uma para cada quarto.
 - Portas de vidro: estar, jantar e cozinha <-> alpendre.
+
+Todas as janelas ficaram com `blockedWallPercent: 0`.
+
+## Grafo de Acessibilidade
+
+O verificador constrói um grafo usando somente portas/passagens sem parede bloqueando o vão. A partir da entrada social e da entrada pela garagem, o grafo alcança todos os ambientes internos contados: estar, jantar, cozinha, despensa, lavabo, suíte de hóspedes, banho hóspedes, homeschool, lavanderia, depósito, mudroom, hall íntimo, suíte casal, banho casal, closet casal, quartos dos meninos e banheiro compartilhado.
 
 ## Tabela de Áreas Estimadas
 
@@ -70,13 +78,13 @@ Importante: todas as dimensões, áreas e posições são **HIPÓTESES PROVISÓR
 | Depósito doméstico | 3,00 m² |
 | Entrada garagem / mudroom hipótese | 4,50 m² |
 | Circulação íntima reservada | 25,20 m² |
-| Suíte casal | 18,60 m² |
-| Banho casal | 4,50 m² |
-| Closet casal | 3,00 m² |
+| Suíte casal | 16,12 m² |
+| Banho casal | 4,00 m² |
+| Closet casal | 2,50 m² |
 | Quarto meninos 1 | 12,25 m² |
 | Banheiro dos meninos - duas cubas | 5,95 m² |
 | Quarto meninos 2 | 12,25 m² |
-| **Total interno estimado** | **210,63 m²** |
+| **Total interno estimado** | **207,15 m²** |
 
 Áreas externas/apoio visual, não somadas ao total interno:
 
@@ -87,21 +95,22 @@ Importante: todas as dimensões, áreas e posições são **HIPÓTESES PROVISÓR
 | Garagem coberta | 30,80 m² |
 | Vagas descobertas | 30,80 m² |
 | Varal reservado | 7,20 m² |
+| Jardim de luz íntimo | 7,83 m² |
 
 ## Pontos Para Aprovação da Família
 
-- Se a entrada social pelo estar é a relação desejada para chegada de visitas.
-- Se o acesso da suíte de hóspedes pela área social/cozinha é aceitável ou deve ter antecâmara.
-- Se o hall íntimo ficou reservado o suficiente apesar da área de circulação maior.
-- Se o homeschooling com 18,60 m² atende estudo, trabalho, biblioteca e uso simultâneo.
-- Se a cozinha aberta deve manter ilha livre ou receber pia/fogão em ciclo futuro.
+- Se o caminho garagem -> mudroom -> cozinha/serviço atende a rotina diária.
+- Se o `Jardim de luz íntimo` é aceitável como hipótese para iluminar/ventilar o quarto dos meninos 1.
+- Se a suíte de hóspedes ainda precisa de uma antecâmara mais reservada; na v3 ela continua integrada e acessível pela área social/cozinha.
+- Se a redução provisória da suíte do casal, banho e closet compensa a criação do jardim de luz.
+- Se o hall íntimo de 25,20 m² deve ser mantido, reduzido ou redesenhado.
+- Se o homeschooling com 18,60 m² comporta os usos simultâneos com conforto.
 - Se alpendre, churrasqueira simples e portas de vidro dão a conexão desejada com quintal.
-- Se lavanderia, varal, mudroom e garagem funcionam para chegada diária da família.
-- Se o tamanho interno estimado de 210,63 m² está compatível com orçamento e terreno futuro.
+- Se o tamanho interno estimado de 207,15 m² está compatível com orçamento e terreno futuro.
 
 ## Limitações
 
 - Não há validação de lote real, recuos, topografia, orientação solar, estrutura, cobertura ou normas.
-- A garagem e o quintal são massas de estudo para fluxo e proporção, não implantação aprovada.
-- O 3D usa a mesma geometria da planta, mas ainda é volumetria preliminar sem detalhamento construtivo.
+- A garagem, quintal e jardim de luz são massas de estudo para fluxo e proporção, não implantação aprovada.
+- O passeio 3D foi verificado por renderização/captura e pelos testes geométricos de vãos/colliders; não foi gravado vídeo.
 - Esta versão deve orientar conversa familiar, não obra nem aprovação técnica.
